@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Pollynx.Application\Pollynx.Application.csproj" />
+    <ProjectReference Include="..\Pollynx.Domain\Pollynx.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Configurations\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>

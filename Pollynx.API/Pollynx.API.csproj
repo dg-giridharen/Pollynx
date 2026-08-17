@@ -8,6 +8,17 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.9" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pollynx.Application\Pollynx.Application.csproj" />
+    <ProjectReference Include="..\Pollynx.Infrastructure\Pollynx.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Middleware\" />
   </ItemGroup>
 
 </Project>

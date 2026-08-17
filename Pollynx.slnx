@@ -1,1 +1,10 @@
-<Solution />
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Project Path="Pollynx.API/Pollynx.API.csproj" Id="d1f43856-af9a-46d2-ba61-01919b4685b2" />
+  <Project Path="Pollynx.Application/Pollynx.Application.csproj" Id="300abc62-e1b5-426c-a9dc-a4619ba325e4" />
+  <Project Path="Pollynx.Domain/Pollynx.Domain.csproj" Id="e9734d46-9f28-4587-9e52-6bf4c283f9fd" />
+  <Project Path="Pollynx.Infrastructure/Pollynx.Infrastructure.csproj" Id="18b65ebe-bfc5-41a9-a2d4-90052af309ee" />
+  <Project Path="Pollynx.Tests/Pollynx.Tests.csproj" Id="8d2e937c-3ef5-41ab-9907-d1cb97c215c9" />
+</Solution>

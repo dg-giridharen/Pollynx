@@ -15,6 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Pollynx.Application\Pollynx.Application.csproj" />
+    <ProjectReference Include="..\Pollynx.Infrastructure\Pollynx.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 

@@ -6,4 +6,16 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Pollynx.Domain\Pollynx.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DTOs\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Mapping\" />
+    <Folder Include="Validators\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>
