@@ -1,0 +1,118 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+*.sln.iml
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET / .NET
+wwwroot/lib/
+
+# Test results
+TestResults/
+*.trx
+
+# Coverage
+coverage/
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Windows image thumbnails
+Thumbs.db
+ehthumbs.db
+
+# Publish output
+publish/
+*.publishsettings
+
+# Azure
+*.publishsettings
+appsettings.Development.json
+
+# User-specific configuration
+appsettings.Local.json
+
+# Secrets
+secrets.json
+secrets.*.json
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# JetBrains Rider
+*.DotSettings.user
+
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper*
+*.DotSettings.user
+
+# SQL Server local database
+*.mdf
+*.ldf
+
+# SQLite databases
+*.db
+*.db-shm
+*.db-wal
+
+# Entity Framework
+Migrations/
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+
+# Generated files
+Generated/
+generated/
+
+# BenchmarkDotNet
+BenchmarkDotNet.Artifacts/
+
+# Cake
+tools/**/*
+!tools/packages.config
+
+# Node
+node_modules/
+
+# npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Frontend build output
+dist/
+build/
