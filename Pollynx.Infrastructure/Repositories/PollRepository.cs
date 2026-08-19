@@ -18,6 +18,7 @@ public class PollRepository : IPollRepository
     {
         return await _context.Polls
             .Include(x => x.Options)
+            .Include(x => x.Votes)
             .FirstOrDefaultAsync(x => x.Id == id);
     }
 
