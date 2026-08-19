@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Pollynx.Infrastructure.Data;
+using Pollynx.Application.Interfaces;
+using Pollynx.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,11 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IPollRepository, PollRepository>();
+builder.Services.AddScoped<IVoteRepository, VoteRepository>();
+builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 
 var app = builder.Build();
 
