@@ -21,7 +21,10 @@ public class PollService : IPollService
     public async Task<PollResponseDto> CreateAsync(
         CreatePollDto request)
     {
-        if (request.StartTime >= request.EndTime)
+        var startTime = ToUtc(request.StartTime);
+        var endTime = ToUtc(request.EndTime);
+
+        if (startTime >= endTime)
         {
             throw new ArgumentException(
                 "Start time must be before end time.");
@@ -49,8 +52,8 @@ public class PollService : IPollService
         {
             Title = request.Title.Trim(),
             Description = request.Description.Trim(),
-            StartTime = request.StartTime,
-            EndTime = request.EndTime,
+            StartTime = startTime,
+            EndTime = endTime,
             IsPublic = request.IsPublic,
             IsClosed = false,
             CreatedAt = DateTime.UtcNow,
@@ -105,7 +108,10 @@ public class PollService : IPollService
                 "A closed poll cannot be edited.");
         }
 
-        if (request.StartTime >= request.EndTime)
+        var startTime = ToUtc(request.StartTime);
+        var endTime = ToUtc(request.EndTime);
+
+        if (startTime >= endTime)
         {
             throw new ArgumentException(
                 "Start time must be before end time.");
@@ -113,8 +119,8 @@ public class PollService : IPollService
 
         poll.Title = request.Title.Trim();
         poll.Description = request.Description.Trim();
-        poll.StartTime = request.StartTime;
-        poll.EndTime = request.EndTime;
+        poll.StartTime = startTime;
+        poll.EndTime = endTime;
         poll.IsPublic = request.IsPublic;
 
         await _pollRepository.UpdateAsync(poll);
@@ -168,4 +174,13 @@ public class PollService : IPollService
 
         return _mapper.Map<List<PollResponseDto>>(polls);
     }
+
+    private static DateTime ToUtc(DateTime value) =>
+        value.Kind switch
+        {
+            DateTimeKind.Utc => value,
+            DateTimeKind.Local => value.ToUniversalTime(),
+            _ => DateTime.SpecifyKind(value, DateTimeKind.Local)
+                .ToUniversalTime()
+        };
 }
