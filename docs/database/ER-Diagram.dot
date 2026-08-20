@@ -1,0 +1,69 @@
+digraph ER {
+    rankdir=LR;
+    nodesep=0.7;
+    ranksep=1.3;
+    fontname="Arial";
+    node [shape=plaintext, fontname="Arial"];
+    edge [fontname="Arial", fontsize=10, color="#5B7A99"];
+
+    User [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5" COLOR="#2E4E6E">
+            <TR><TD BGCOLOR="#DDEBF7" COLSPAN="2"><B>User</B></TD></TR>
+            <TR><TD ALIGN="LEFT">Id <B>(PK)</B></TD><TD>int</TD></TR>
+            <TR><TD ALIGN="LEFT">FullName</TD><TD>nvarchar(150)</TD></TR>
+            <TR><TD ALIGN="LEFT">Email <B>(UQ)</B></TD><TD>nvarchar(150)</TD></TR>
+            <TR><TD ALIGN="LEFT">PasswordHash</TD><TD>nvarchar(4000)</TD></TR>
+            <TR><TD ALIGN="LEFT">Role</TD><TD>int</TD></TR>
+            <TR><TD ALIGN="LEFT">CreatedAt</TD><TD>datetime2</TD></TR>
+        </TABLE>>];
+
+    RefreshToken [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5" COLOR="#2E4E6E">
+            <TR><TD BGCOLOR="#DDEBF7" COLSPAN="2"><B>RefreshToken</B></TD></TR>
+            <TR><TD ALIGN="LEFT">Id <B>(PK)</B></TD><TD>int</TD></TR>
+            <TR><TD ALIGN="LEFT">UserId <B>(FK)</B></TD><TD>int</TD></TR>
+            <TR><TD ALIGN="LEFT">Token <B>(UQ)</B></TD><TD>nvarchar(256)</TD></TR>
+            <TR><TD ALIGN="LEFT">ExpiresAt</TD><TD>datetime2</TD></TR>
+            <TR><TD ALIGN="LEFT">IsRevoked</TD><TD>bit</TD></TR>
+            <TR><TD ALIGN="LEFT">CreatedAt</TD><TD>datetime2</TD></TR>
+        </TABLE>>];
+
+    Poll [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5" COLOR="#2E4E6E">
+            <TR><TD BGCOLOR="#DDEBF7" COLSPAN="2"><B>Poll</B></TD></TR>
+            <TR><TD ALIGN="LEFT">Id <B>(PK)</B></TD><TD>int</TD></TR>
+            <TR><TD ALIGN="LEFT">Title</TD><TD>nvarchar(200)</TD></TR>
+            <TR><TD ALIGN="LEFT">Description</TD><TD>nvarchar(1000)</TD></TR>
+            <TR><TD ALIGN="LEFT">StartTime (UTC)</TD><TD>datetime2</TD></TR>
+            <TR><TD ALIGN="LEFT">EndTime (UTC)</TD><TD>datetime2</TD></TR>
+            <TR><TD ALIGN="LEFT">IsPublic</TD><TD>bit</TD></TR>
+            <TR><TD ALIGN="LEFT">IsClosed</TD><TD>bit</TD></TR>
+            <TR><TD ALIGN="LEFT">CreatedAt</TD><TD>datetime2</TD></TR>
+        </TABLE>>];
+
+    PollOption [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5" COLOR="#2E4E6E">
+            <TR><TD BGCOLOR="#DDEBF7" COLSPAN="2"><B>PollOption</B></TD></TR>
+            <TR><TD ALIGN="LEFT">Id <B>(PK)</B></TD><TD>int</TD></TR>
+            <TR><TD ALIGN="LEFT">PollId <B>(FK)</B></TD><TD>int</TD></TR>
+            <TR><TD ALIGN="LEFT">OptionText</TD><TD>nvarchar(200)</TD></TR>
+            <TR><TD ALIGN="LEFT">(UQ) PollId + OptionText</TD><TD></TD></TR>
+        </TABLE>>];
+
+    Vote [label=<
+        <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5" COLOR="#2E4E6E">
+            <TR><TD BGCOLOR="#DDEBF7" COLSPAN="2"><B>Vote</B></TD></TR>
+            <TR><TD ALIGN="LEFT">Id <B>(PK)</B></TD><TD>int</TD></TR>
+            <TR><TD ALIGN="LEFT">UserId <B>(FK)</B></TD><TD>int</TD></TR>
+            <TR><TD ALIGN="LEFT">PollId <B>(FK)</B></TD><TD>int</TD></TR>
+            <TR><TD ALIGN="LEFT">PollOptionId <B>(FK)</B></TD><TD>int</TD></TR>
+            <TR><TD ALIGN="LEFT">CreatedAt</TD><TD>datetime2</TD></TR>
+            <TR><TD ALIGN="LEFT">(UQ) UserId + PollId</TD><TD></TD></TR>
+        </TABLE>>];
+
+    User -> RefreshToken [label="1 owns N"];
+    User -> Vote [label="1 casts N"];
+    Poll -> PollOption [label="1 has N"];
+    Poll -> Vote [label="1 receives N"];
+    PollOption -> Vote [label="1 selected by N"];
+}
