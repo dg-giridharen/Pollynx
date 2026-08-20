@@ -45,6 +45,12 @@ public class PollsController : ControllerBase
 
     [HttpPost]
     [Authorize(Roles = "Admin")]
+    [ProducesResponseType(
+        typeof(PollResponseDto),
+        StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
     public async Task<IActionResult> Create(
         CreatePollDto request)
     {
@@ -80,6 +86,11 @@ public class PollsController : ControllerBase
 
     [HttpPost("{id:int}/close")]
     [Authorize(Roles = "Admin")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
     public async Task<IActionResult> Close(int id)
     {
         await _pollService.CloseAsync(id);

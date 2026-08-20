@@ -16,6 +16,9 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("register")]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
     public async Task<IActionResult> Register(
         RegisterRequestDto request)
     {
@@ -30,6 +33,10 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
+    [ProducesResponseType(
+        typeof(LoginResponseDto),
+        StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IActionResult> Login(
         LoginRequestDto request)
     {
@@ -40,6 +47,10 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("refresh-token")]
+    [ProducesResponseType(
+        typeof(LoginResponseDto),
+        StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IActionResult> RefreshToken(
         RefreshTokenRequestDto request)
     {

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Pollynx.Application.DTOs.Analytics;
 using Pollynx.Application.Interfaces;
 
 namespace Pollynx.API.Controllers;
@@ -18,6 +19,10 @@ public class AnalyticsController : ControllerBase
 
     [HttpGet("results")]
     [AllowAnonymous]
+    [ProducesResponseType(
+        typeof(PollResultDto),
+        StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetResults(int pollId)
     {
         var results =
@@ -28,6 +33,10 @@ public class AnalyticsController : ControllerBase
 
     [HttpGet("analytics")]
     [AllowAnonymous]
+    [ProducesResponseType(
+        typeof(PollAnalyticsDto),
+        StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetAnalytics(int pollId)
     {
         var analytics =
