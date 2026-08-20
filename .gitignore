@@ -86,8 +86,9 @@ _ReSharper*/
 *.db-shm
 *.db-wal
 
-# Entity Framework
-Migrations/
+# Entity Framework migrations are committed intentionally
+# (required for `dotnet ef database update` on a fresh clone)
+!Pollynx.Infrastructure/Migrations/
 
 # Temporary files
 *.tmp
