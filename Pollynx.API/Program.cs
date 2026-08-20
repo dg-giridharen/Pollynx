@@ -1,10 +1,14 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Pollynx.API.Middleware;
 using Pollynx.Application.DTOs.Auth;
 using Pollynx.Application.Interfaces;
 using Pollynx.Application.Mapping;
 using Pollynx.Application.Services;
+using Pollynx.Application.Validators;
 using Pollynx.Infrastructure.Data;
 using Pollynx.Infrastructure.Repositories;
 using Pollynx.Infrastructure.Services;
@@ -29,6 +33,11 @@ builder.Services.AddAutoMapper(cfg =>
 {
     cfg.AddProfile<MappingProfile>();
 });
+
+builder.Services.AddFluentValidationAutoValidation();
+
+builder.Services.AddValidatorsFromAssemblyContaining<
+    CreatePollValidator>();
 
 builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -76,6 +85,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 
