@@ -93,6 +93,3 @@ automatically as environment variables.
 See [docs/api/API.md](docs/api/API.md) for the full reference and
 [docs/architecture/architecture.md](docs/architecture/architecture.md) for the design.
 
-## License
-
-Private evaluation project.
