@@ -78,7 +78,7 @@ public class PollServiceTests
     {
         yield return new object[] { new[] { "Red" } };
         yield return new object[] { new[] { "Red", "Red" } };
-        yield return Array.Empty<string>();
+        yield return new object[] { Array.Empty<string>() };
     }
 
     [Theory]
