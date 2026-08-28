@@ -38,7 +38,6 @@ Each layer has a single responsibility and depends only on the layers below it.
 | `Pollynx.Application` | Business rules, use cases, DTOs, FluentValidation validators, service/interface definitions. |
 | `Pollynx.Domain` | Pure entities (`User`, `Poll`, `PollOption`, `Vote`, `RefreshToken`) and enums. No package dependencies. |
 | `Pollynx.Infrastructure` | EF Core + SQL Server, repositories, `JwtService`, `DbSeeder`. |
-| `Pollynx.Tests` | xUnit + Moq unit tests for the core business rules. |
 
 ## Dependency rules
 
