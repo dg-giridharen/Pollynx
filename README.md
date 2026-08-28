@@ -12,12 +12,12 @@ one-vote-per-user enforcement, results with percentages, and voting trends.
 - Results with vote counts and percentages plus trend analytics
 - FluentValidation + global exception middleware returning a consistent error envelope
 - Swagger UI with a working **Authorize** button
-- Postman collection and xUnit/Moq unit tests
+- Postman collection
 
 ## Tech stack
 
 - .NET 10 · ASP.NET Core · EF Core 10 · SQL Server (LocalDB)
-- JWT Bearer · BCrypt-Net · AutoMapper · FluentValidation · Swashbuckle · xUnit · Moq
+- JWT Bearer · BCrypt-Net · AutoMapper · FluentValidation · Swashbuckle
 
 ## Solution layout
 
@@ -27,7 +27,6 @@ Pollynx.sln
 ├── Pollynx.Application    # Services, DTOs, validators, interfaces
 ├── Pollynx.Domain         # Entities + enums (no dependencies)
 ├── Pollynx.Infrastructure # EF Core/SQL Server, repositories, JWT, seeder
-├── Pollynx.Tests          # xUnit + Moq unit tests
 └── docs/
     ├── architecture/architecture.md
     ├── api/API.md
@@ -64,12 +63,6 @@ Open Swagger at `https://localhost:7260/swagger`. The app seeds two users on fir
 | --- | --- | --- |
 | `admin@pollynx.com` | `Admin@123` | Admin |
 | `user@pollynx.com` | `User@123` | User |
-
-### 4. Test
-
-```powershell
-dotnet test
-```
 
 ### 5. Import the Postman collection
 
